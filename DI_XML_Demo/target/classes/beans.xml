@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="college" class="edu.wccnet.wggreen.DI_XML_Demo.College">
+		<constructor-arg name="collegeName" value="WCC"></constructor-arg>
+		<constructor-arg name="yearBuilt" value="1965"></constructor-arg>
+		<property name="zipCode" value="48105"></property>
+		<property name="enrollment" value="18000"></property>
+		<property name="collegeService" ref="communityCollegeService"></property>
+	</bean>
+	<bean id="communityCollegeService"
+		class="edu.wccnet.wggreen.DI_XML_Demo.CommunityCollegeService">
+	</bean>
+	<bean id="universityService"
+		class="edu.wccnet.wggreen.DI_XML_Demo.UniversityService">
+	</bean>
+	<bean id="finaid" class="edu.wccnet.wggreen.DI_XML_Demo.FinAid">
+		<constructor-arg name="college" ref="college"></constructor-arg>
+		<constructor-arg name="finAidService" ref="grants"></constructor-arg>
+	</bean>
+	<bean id="grants" class="edu.wccnet.wggreen.DI_XML_Demo.Grants"></bean>
+</beans>
